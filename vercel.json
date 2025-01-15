@@ -1,16 +1,31 @@
 {
-  "version": 2,
-  "builds": [
+    "version": 2,
+    "builds": [
       {
-          "src": "./index.js",
-          "use": "@vercel/node"
+        "src": "./index.js",
+        "use": "@vercel/node"
       }
-  ],
-  "routes": [
+    ],
+    "routes": [
       {
-          "src": "/(.*)",
-          "dest": "/",
-          "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
+        "src": "/(.*)",
+        "dest": "/",
+        "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
       }
-  ]
-}
+    ],
+    "headers": [
+      {
+        "source": "/(.*)",
+        "headers": [
+          {
+            "key": "Cross-Origin-Opener-Policy",
+            "value": "same-origin-allow-popups"
+          },
+          {
+            "key": "Cross-Origin-Embedder-Policy",
+            "value": "require-corp"
+          }
+        ]
+      }
+    ]
+  }
